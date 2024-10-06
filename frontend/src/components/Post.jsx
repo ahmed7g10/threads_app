@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AiFillDelete } from 'react-icons/ai'
 import { deleteUserPost } from '../store/slices/postSlice'
 import apiUrl from '../MY_ENV/API.JS'
+import { API_URL } from '../MY_ENV/API.JS'
 const Post = ({ post, userId }) => {
     const [liked, setLiked] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -24,7 +25,7 @@ const Post = ({ post, userId }) => {
             try {
 
 
-                const res = await fetch(`http://localhost:5000/api/users/profile/${post?.postedBy}`); //here stoped
+                const res = await fetch(`${API_URL}/users/profile/${post?.postedBy}`); //here stoped
                 const data = await res.json();
 
                 if (data?.message == 'profile') {

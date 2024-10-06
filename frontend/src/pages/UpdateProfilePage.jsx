@@ -18,6 +18,7 @@ import usePreviewImg from "../hooks/usePreviewImg";
 import { update } from "../store/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import apiUrl from "../MY_ENV/API.JS";
+import { API_URL } from "../MY_ENV/API.JS";
 
 export default function UpdateProfilePage() {
     const { user } = useSelector(state => state.user)
@@ -53,7 +54,7 @@ export default function UpdateProfilePage() {
             formData.append('email', inputs.email);
             formData.append('bio', inputs.bio);
             formData.append('password', inputs.password);
-            const res = await fetch(`/api/users/update/${user._id}`, {
+            const res = await fetch(`${API_URL}/users/update/${user._id}`, {
                 method: 'PUT',
                 credentials: 'include',
                 body: formData
