@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import Loader from './Loader'
 import { NavLink } from 'react-router-dom'
 import apiUrl from '../MY_ENV/API.JS'
+import { API_URL } from '../MY_ENV/API.JS'
 
 const UserHeader = ({ user }) => {
     const toast = useToast();
@@ -29,7 +30,7 @@ const UserHeader = ({ user }) => {
         }
         setUpdateing(true)
         try {
-            const res = await fetch(`http://localhost:5000/api/users/follow/${user._id}`, {
+            const res = await fetch(`${API_URL}/users/follow/${user._id}`, {
                 method: 'PUT',
                 credentials: 'include'
             });
@@ -45,7 +46,7 @@ const UserHeader = ({ user }) => {
             setUpdateing(false)
         }
     }
-    const [following, setFollowing] = useState(user.followers.includes(currentUser?._id || false));
+    const [following, setFollowing] = useState(user?.followers?.includes(currentUser?._id || false));
 
 
     return (

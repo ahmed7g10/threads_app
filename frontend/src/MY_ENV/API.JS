@@ -1,4 +1,6 @@
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.MODE === "development" 
+? "http://localhost:5000/api/uploads" 
+: "/uploads";
 export const API_URL = import.meta.env.MODE === "development" 
     ? "http://localhost:5000/api/auth" 
     : "/api";

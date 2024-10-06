@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { API_URL } from '../../MY_ENV/API.JS';
+
 export const getfeedPosts = createAsyncThunk('my_posts/getfeedPosts', async (_, thunkAPI) => {
     const { rejectWithValue } = thunkAPI
     try {
-        const res = await fetch(`http://localhost:5000/api/posts/feed`, {
+        const res = await fetch(`${API_URL}/posts/feed`, {
             method: 'GET',
             credentials: 'include'
         })
@@ -17,7 +19,7 @@ export const getPOST = createAsyncThunk('my_posts/getpost', async (pid, thunkAPI
     const { rejectWithValue } = thunkAPI
 
     try {
-        const res = await fetch(`http://localhost:5000/api/posts/${pid}`, {
+        const res = await fetch(`${API_URL}/posts/${pid}`, {
             method: 'GET', credentials: 'include',
 
         });
@@ -30,7 +32,7 @@ export const getPOST = createAsyncThunk('my_posts/getpost', async (pid, thunkAPI
 });
 export const likePOST = createAsyncThunk('my_posts/likepost', async ({ p_id, isalot }) => {
     try {
-        const res = await fetch("http://localhost:5000/api/posts/like/" + p_id, {
+        const res = await fetch(`${API_URL}/posts/like/` + p_id, {
             method: "PUT",
             credentials: 'include',
             headers: {
@@ -46,7 +48,7 @@ export const likePOST = createAsyncThunk('my_posts/likepost', async ({ p_id, isa
 
 export const replyPOST = createAsyncThunk('my_posts/replypost', async (d) => {
     try {
-        const res = await fetch("http://localhost:5000/api/posts/reply/" + d.id, {
+        const res = await fetch(`${API_URL}/posts/reply/` + d.id, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -63,7 +65,7 @@ export const replyPOST = createAsyncThunk('my_posts/replypost', async (d) => {
 });
 export const getUserPosts = createAsyncThunk('my_posts/getuserposts', async (username) => {
     try {
-        const res = await fetch(`http://localhost:5000/api/posts/user/${username}`, {
+        const res = await fetch(`${API_URL}/posts/user/${username}`, {
             method: 'GET'
         });
         const data = await res.json();
@@ -76,7 +78,7 @@ export const getUserPosts = createAsyncThunk('my_posts/getuserposts', async (use
 });
 export const deleteUserPost = createAsyncThunk('my_posts/deletepost', async (iid) => {
     try {
-        const res = await fetch(`http://localhost:5000/api/posts/${iid}`, {
+        const res = await fetch(`${API_URL}/posts/${iid}`, {
             method: 'DELETE',
             credentials: 'include'
         })
@@ -96,7 +98,7 @@ export const createPostForUser = createAsyncThunk('my_posts/createpost', async (
         if (d.img!="non") {
              with_file.append('img', d.img);
         }
-        const res = await fetch(`http://localhost:5000/api/posts/create`, {
+        const res = await fetch(`${API_URL}/posts/create`, {
             method: 'POST',
             credentials: 'include',
             body: with_file

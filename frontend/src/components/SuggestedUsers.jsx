@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Skeleton, SkeletonCircle, Text, useToast } from '@chakra-ui/react'
 import  { useEffect, useState } from 'react'
 import SuggestedUser from './SuggestedUser';
+import { API_URL } from '../MY_ENV/API.JS';
 
 const SuggestedUsers = () => {
     const [loading, setLoading] = useState(true);
@@ -9,7 +10,7 @@ const SuggestedUsers = () => {
     const doFetch = async () => {
         setLoading(true)
         try {
-            const res = await fetch('http://localhost:5000/api/users/suggestesUsers', {
+            const res = await fetch(`${API_URL}/users/suggestesUsers`, {
                 method: 'GET',
                 credentials: 'include'
             });

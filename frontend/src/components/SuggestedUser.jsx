@@ -3,6 +3,7 @@ import { Avatar, Box, Button, Flex, Text, useToast } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import apiUrl from '../MY_ENV/API.JS';
 import { useSelector } from 'react-redux';
+import { API_URL } from '../MY_ENV/API.JS';
 const SuggestedUser = ({ user }) => {
     const currentUser = useSelector(state => state.user.user);
     const toast = useToast()
@@ -17,7 +18,7 @@ const SuggestedUser = ({ user }) => {
         }
         setUpdating(true)
         try {
-            const res = await fetch(`http://localhost:5000/api/users/follow/${user._id}`, {
+            const res = await fetch(`${API_URL}/users/follow/${user._id}`, {
                 method: 'PUT',
                 credentials: 'include'
             });

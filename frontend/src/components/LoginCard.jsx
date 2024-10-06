@@ -5,7 +5,7 @@ import {
     FormLabel,
     Input,
     InputGroup,
-    HStack,
+    
     InputRightElement,
     Stack,
     Button,
@@ -36,8 +36,6 @@ export default function LoginCard({ setValue }) {
 
 
     const handleLogin = async () => {
-        console.log(API_URL,"APIurl");
-        console.log(apiUrl,"api url");
         setLoading(true)
         try {
             const res = await fetch(`${API_URL}/users/login`, {
