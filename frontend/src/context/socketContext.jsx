@@ -12,7 +12,7 @@ export const SocketContextProvider=({children})=>{
     const [onlineUsers,setOnlineUsers]=useState([])
     const {user}=useSelector(state=>state.user);
     useEffect(()=>{
-        const socket=io("http://localhost:5000",{
+        const socket=io(import.meta.env.MODE === "development" ? "http://localhost:5000" : "https://threads-app-jxbj.onrender.com",{
             query:{
                 userId:user?._id
             }
