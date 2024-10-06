@@ -8,6 +8,7 @@ import { Flex, Text, useToast } from '@chakra-ui/react';
 import Post from '../components/Post';
 import { getUserPosts } from './../store/slices/postSlice';
 import CreatePost from '../components/CreatePost';
+import { API_URL } from '../MY_ENV/API.JS';
 
 const UserPage = () => {
     const [user, setUser] = useState(null);
@@ -24,7 +25,7 @@ const UserPage = () => {
     const getUser = async () => {
         try {
             setLoading(true)
-            const res = await fetch(`http://localhost:5000/api/users/profile/${username}`, {
+            const res = await fetch(`${API_URL}/users/profile/${username}`, {
                 method: 'GET'
             })
             const data = await res.json()

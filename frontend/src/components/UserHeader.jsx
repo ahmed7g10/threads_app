@@ -73,9 +73,9 @@ const UserHeader = ({ user }) => {
                     />
                 </Box>
             </Flex>
-            <Text>{user.bio || 'no bio'}</Text>
+            <Text>{user?.bio || 'no bio'}</Text>
             {
-                currentUser?.username == user.username ? (
+                currentUser?.username == user?.username ? (
                     <Flex>
                         <NavLink to={'/update'}>
                             <Button>Update Profile</Button>
