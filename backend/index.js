@@ -39,7 +39,7 @@ const runServer = async () => {
   
 //routes
 app.use(cors({
-    origin: 'http://localhost:3000', // Update to your frontend URL
+    origin: ['http://localhost:3000','http://localhost:5000','https://threads-app-jxbj.onrender.com'], // Update to your frontend URL
     credentials: true // Allow cookies
 }));
 

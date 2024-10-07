@@ -24,7 +24,7 @@ const createPost = async (req, res) => {
         }
         if (req?.file?.filename) {
             const post = await postModel.create({ postedBy, text, img: req.file.filename })
-            return res.status(201).json({ message: 'successfully created', post })
+            return res.status(201).json( post )
         } else {
             const post = await postModel.create({ postedBy, text })
             return res.status(201).json(post)

@@ -44,7 +44,7 @@ const Post = ({ post, userId }) => {
             }
         }
         getUser()
-    }, [userId])
+    }, [post])
     if (loading) {
         return <Loader />
     }
