@@ -10,6 +10,7 @@ import { deleteUserPost, getPOST } from '../store/slices/postSlice';
 import { formatDistanceToNow } from 'date-fns';
 import { AiFillDelete } from 'react-icons/ai';
 import apiUrl from '../MY_ENV/API.JS';
+import { API_URL } from '../MY_ENV/API.JS';
 
 const PostPage = () => {
   const [liked, setLiked] = useState(false);
@@ -26,7 +27,7 @@ const PostPage = () => {
   }
   const getPostUser = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/users/profile/${post?.postedBy}`, {
+      const res = await fetch(`${API_URL}/users/profile/${post?.postedBy}`, {
         method: 'GET'
       });
       const data = await res.json();

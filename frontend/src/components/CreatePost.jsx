@@ -38,7 +38,7 @@ const CreatePost = () => {
     const [remainingChar, setRemainingChar] = useState(MAX_CHAR);
     const showToast = useToast();
     const { status } = useSelector(state => state.posts)
-    const { username } = useParams();
+    // const { username } = useParams();
     const dispatch = useDispatch();
     const handleTextChange = (e) => {
         const inputText = e.target.value;
@@ -54,6 +54,7 @@ const CreatePost = () => {
     };
 
     const handleCreatePost = async () => {
+       try {
         if (!user) {
             showToast({
                 description: "not lloged in",
@@ -70,6 +71,10 @@ const CreatePost = () => {
         onClose()
         setImageUrl('')
         setPostText('')
+       } catch (error) {
+        console.log(error.message);
+        
+       }
     };
     if (status == 'loading') {
         return <Loader />

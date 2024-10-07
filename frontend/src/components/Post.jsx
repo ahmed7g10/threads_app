@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Flex, Image, Text, useToast } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { BsThreeDots } from 'react-icons/bs'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useParams } from 'react-router-dom'
 import Loader from './Loader'
 import Actions from './Actions'
 import { formatDistanceToNow } from 'date-fns';
@@ -15,6 +15,7 @@ const Post = ({ post, userId }) => {
     const [loading, setLoading] = useState(true);
     const [postCreator, setPostCreator] = useState();
     const { user } = useSelector(state => state.user);
+    const {username}=useParams();
     const dispatch = useDispatch()
 
     const toast = useToast();
@@ -24,7 +25,18 @@ const Post = ({ post, userId }) => {
             setLoading(true)
             try {
 
+                if(username){
+                    const res = await fetch(`${API_URL}/users/profile/${user?._id}`); //here stoped
+                const data = await res.json();
 
+                if (data?.message == 'profile') {
+                    setPostCreator(data.user);
+                    return
+                }
+                console.log(data);
+                
+                alert('error')
+                }
                 const res = await fetch(`${API_URL}/users/profile/${post?.postedBy}`); //here stoped
                 const data = await res.json();
 
@@ -32,6 +44,8 @@ const Post = ({ post, userId }) => {
                     setPostCreator(data.user);
                     return
                 }
+                console.log(data);
+                
                 alert('error')
 
             } catch (error) {

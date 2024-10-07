@@ -31,7 +31,7 @@ export default function UpdateProfilePage() {
     });
     const { handleImageChange, imageUrl } = usePreviewImg();
 
-    const [updating, setUpdating] = useState(false);
+    // const [updating, setUpdating] = useState(false);
     const nav = useNavigate()
     const showToast = useToast();
     const fileRef = useRef(null);
@@ -83,7 +83,6 @@ export default function UpdateProfilePage() {
             })
         }
     };
-    console.log(user);
 
     return (
         <form onSubmit={handleSubmit}>
