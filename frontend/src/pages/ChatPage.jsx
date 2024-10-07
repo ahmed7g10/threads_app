@@ -7,6 +7,7 @@ import MessageContainer from '../components/MessageContainer'
 import { useDispatch, useSelector } from 'react-redux';
 import { changeConversation, getConversations, mockConversation } from './../store/slices/messageSlice';
 import { useSocket } from '../context/socketContext'
+import { API_URL } from '../MY_ENV/API.JS'
 const ChatPage = () => {
     const { user } = useSelector(state => state.user)
     const toast = useToast();
@@ -41,7 +42,7 @@ const ChatPage = () => {
         setSearchLoading(true)
         try {
             if (!search) return;
-            const res = await fetch(`http://localhost:5000/api/users/profile/${search}`);
+            const res = await fetch(`${API_URL}/users/profile/${search}`);
             const data = await res.json();
             // console.log(data);
 

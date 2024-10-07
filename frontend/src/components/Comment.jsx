@@ -5,6 +5,7 @@ import { BsThreeDots } from 'react-icons/bs'
 import Loader from './Loader';
 import { formatDistanceToNow } from 'date-fns';
 import apiUrl from '../MY_ENV/API.JS';
+import { API_URL } from '../MY_ENV/API.JS';
 
 const Comment = ({ userAvatar, username, comment, createdAt, likes }) => {
     const [liked, setLiked] = useState(false);
@@ -15,7 +16,7 @@ const Comment = ({ userAvatar, username, comment, createdAt, likes }) => {
     const getUser = async () => {
         try {
             setLoading(true)
-            const res = await fetch(`http://localhost:5000/api/users/profile/${userAvatar}`, {
+            const res = await fetch(`${API_URL}/users/profile/${userAvatar}`, {
                 method: 'GET'
             })
             const data = await res.json()

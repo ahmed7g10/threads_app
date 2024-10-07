@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../store/slices/userSlice';
+import { API_URL } from '../MY_ENV/API.JS';
 
 const LogoutButton = () => {
     const toast = useToast();
@@ -11,7 +12,7 @@ const LogoutButton = () => {
     const handleLogout = async () => {
         try {
             localStorage.removeItem('user-threads');
-            const res = await fetch('http://localhost:5000/api/users/logout', {
+            const res = await fetch(`${API_URL}/users/logout`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",

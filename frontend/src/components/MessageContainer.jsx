@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import apiUrl from '../MY_ENV/API.JS'
 import { updateConversationLastMessage } from '../store/slices/messageSlice'
 import { useSocket } from '../context/socketContext'
+import { API_URL } from '../MY_ENV/API.JS'
 
 const MessageContainer = () => {
     const [loading, setLoading] = useState(true);
@@ -19,7 +20,7 @@ const MessageContainer = () => {
         setLoading(true)
         try {
 
-            const res = await fetch(`http://localhost:5000/api/messages/${selectedConversation.userId}`, {
+            const res = await fetch(`${API_URL}/messages/${selectedConversation.userId}`, {
                 credentials: 'include'
             })
             const data = await res.json();

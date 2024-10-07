@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { logout } from '../store/slices/userSlice'
 import { useNavigate } from 'react-router-dom'
+import { API_URL } from '../MY_ENV/API.JS'
 
 const SettingsPage = () => {
     const toast = useToast()
@@ -11,7 +12,7 @@ const SettingsPage = () => {
     const freezAccount = async () => {
         if (window.confirm('Are You Sure You Want To Fereez Yor Account')) {
             try {
-                const res = await fetch('http://localhost:5000/api/users/freeze', {
+                const res = await fetch(`${API_URL}/users/freeze`, {
                     method: 'PUT',
                     credentials: 'include'
                 })
@@ -22,7 +23,7 @@ const SettingsPage = () => {
                         status: 'success'
                     })
                     localStorage.removeItem('user-threads');
-                    const res = await fetch('http://localhost:5000/api/users/logout', {
+                    const res = await fetch(`${API_URL}/users/logout`, {
                         method: 'POST',
                         credentials: 'include',
                         headers: {

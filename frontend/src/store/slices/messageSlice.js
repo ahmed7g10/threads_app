@@ -1,8 +1,9 @@
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { API_URL } from '../../MY_ENV/API.JS';
 export const getConversations = createAsyncThunk('/messages/getconv', async (_, { rejectWithValue }) => {
     try {
-        const res = await fetch(`http://localhost:5000/api/messages/conversations`, {
+        const res = await fetch(`${API_URL}/messages/conversations`, {
             headers: {
                 "content-type": "application/json"
             },

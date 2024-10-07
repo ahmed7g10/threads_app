@@ -4,6 +4,7 @@ import { IoSendSharp } from 'react-icons/io5'
 import { useDispatch, useSelector } from 'react-redux';
 import { changeConversation, updateConversations } from '../store/slices/messageSlice';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../MY_ENV/API.JS';
 const MessageInput = ({ messages, setMessages }) => {
     const [loading, setLoading] = useState(false);
     const { selectedConversation } = useSelector(state => state.message);
@@ -16,7 +17,7 @@ const MessageInput = ({ messages, setMessages }) => {
         setLoading(true)
         try {
             if (!message) return;
-            const res = await fetch(`http://localhost:5000/api/messages`, {
+            const res = await fetch(`${API_URL}/messages`, {
                 method: "POST",
                 credentials: 'include',
                 headers: {

@@ -12,6 +12,7 @@ import { logout } from '../store/slices/userSlice';
 import { Link } from 'react-router-dom';
 import { BsFillChatFill, BsFillChatQuoteFill } from 'react-icons/bs'
 import { SettingsIcon } from '@chakra-ui/icons'
+import { API_URL } from '../MY_ENV/API.JS'
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { user } = useSelector(state => state.user)
@@ -21,7 +22,7 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       localStorage.removeItem('user-threads');
-      const res = await fetch('http://localhost:5000/api/users/logout', {
+      const res = await fetch(`${API_URL}/users/logout`, {
         method: 'POST',
         credentials: 'include',
         headers: {
