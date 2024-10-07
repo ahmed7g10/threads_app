@@ -25,18 +25,6 @@ const Post = ({ post, userId }) => {
             setLoading(true)
             try {
 
-                if(username){
-                    const res = await fetch(`${API_URL}/users/profile/${user?._id}`); //here stoped
-                const data = await res.json();
-
-                if (data?.message == 'profile') {
-                    setPostCreator(data.user);
-                    return
-                }
-                console.log(data);
-                
-                alert('error')
-                }
                 const res = await fetch(`${API_URL}/users/profile/${post?.postedBy}`); //here stoped
                 const data = await res.json();
 
