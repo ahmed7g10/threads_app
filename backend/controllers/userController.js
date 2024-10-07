@@ -140,7 +140,7 @@ const updateUser = async (req, res) => {
         user.name = name || user.name;
         user.email = email || user.email;
         user.username = username || user.username;
-        if (req?.file.filename){
+        if (req?.file?.filename){
             if(user.profilePic){
                 imagePath=path.join(__dirname,'..','uploads',user.profilePic);
             fs.unlink(imagePath,(e)=>{
