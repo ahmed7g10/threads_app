@@ -37,7 +37,6 @@ const UserHeader = ({ user }) => {
             const data = await res.json();
             toast({ description: following ? 'un followed successfully' : "followed successfully", status: 'success' });
             setFollowing(!following)
-            console.log(data);
 
         } catch (error) {
             console.log(error);

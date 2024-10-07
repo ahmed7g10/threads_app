@@ -57,7 +57,6 @@ export default function LoginCard({ setValue }) {
             showToast({
                 description: 'loged in successfully', status: 'success'
             });
-            console.log(data);
 
             localStorage.setItem("user-threads", JSON.stringify(data));
             dispatch(login(data))

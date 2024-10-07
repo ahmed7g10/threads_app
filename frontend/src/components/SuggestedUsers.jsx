@@ -15,7 +15,6 @@ const SuggestedUsers = () => {
                 credentials: 'include'
             });
             const data = await res.json();
-            console.log(data);
             setSuggestedUsers(data)
         } catch (error) {
             toast({

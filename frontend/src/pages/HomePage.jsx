@@ -38,9 +38,7 @@ const HomePage = () => {
             }
 
             const is_expire = new Date(decode.exp * 1000) < Date.now();
-            console.log(is_expire);
-
-            console.log(new Date(decode.exp * 1000));
+           
 
             if (is_expire) {
                 dispatch(logout());

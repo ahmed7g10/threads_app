@@ -18,7 +18,6 @@ const LogoutButton = () => {
                 },
             })
             const data = await res.json()
-            console.log(data);
             dispatch(logout())
             toast({
                 description: 'user loged out successfully', status: 'success'
