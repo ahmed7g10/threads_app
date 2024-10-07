@@ -62,11 +62,12 @@ const CreatePost = () => {
             })
             return
         }
-        if(text==""){
+        if(postText==""){
             showToast({
                 description: "enter post text",
                 status: 'error'
             })
+            return;
         }
         const d = { text: postText, postedBy: user._id, img: imageUrl||'non' };
         showToast({
