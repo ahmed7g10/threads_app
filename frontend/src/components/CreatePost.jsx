@@ -62,11 +62,17 @@ const CreatePost = () => {
             })
             return
         }
+        if(text==""){
+            showToast({
+                description: "enter post text",
+                status: 'error'
+            })
+        }
+        const d = { text: postText, postedBy: user._id, img: imageUrl||'non' };
         showToast({
             description: "post created",
             status: 'success'
         })
-        const d = { text: postText, postedBy: user._id, img: imageUrl||'non' };
         dispatch(createPostForUser(d))
         onClose()
         setImageUrl('')
