@@ -7,7 +7,7 @@ const genrateTokenAndSetCookie = (userId, res) => {
         httpOnly: false,// xss protaction
         maxAge: 15 * 24 * 60 * 60 * 1000,
         // maxAge: 1 * 60 * 1000, // 1 minute
-        sameSite: 'None', //csrf attacks protactions
+        sameSite: 'strict', //csrf attacks protactions
         path: '/'
     })
 
