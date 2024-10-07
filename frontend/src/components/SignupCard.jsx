@@ -20,6 +20,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
 import { login } from "../store/slices/userSlice";
 import Loader from "./Loader";
+import { API_URL } from "../MY_ENV/API.JS";
 
 export default function SignupCard({ setValue }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -38,7 +39,7 @@ export default function SignupCard({ setValue }) {
   const handleSignup = async () => {
     setLoading(true)
     try {
-      const res = await fetch("http://localhost:5000/api/users/signup", {
+      const res = await fetch(`${API_URL}/users/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
